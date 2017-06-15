@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { css } from 'aphrodite/no-important'
-import Hammer from 'react-hammerjs';
 import { Tab } from '../../ui/panels/tab'
+import { Item } from '../../ui/item'
 import g from '../../style/global'
 import a from '../../style/additionally'
 
 const links = [
-    {text:'Текущие',a:'/records/current'},
-    {text:'История',a:'/records/history'}
+    {text:'Текущие',a:'/records'},
+    {text:'История',a:'/records_history'}
 ]
 const array = [
     {photo:'/img/ava1.png', name:'Елена Дементьева'},
@@ -19,12 +19,13 @@ const array = [
     {photo:'/img/ava5.png', name:'Евгения Петрова'},
 ]
 
-class Records extends Component{
+class RecordsCurrent extends Component{
     render(){
         return(
             <div>
-                <Tab tab={links} />
-                {this.props.children}
+                {array.map((item, index) => (
+                    <Item key={index} item={item} />
+                ))}
             </div>
         )
     }
@@ -35,4 +36,4 @@ export default connect(
     Store: state
   }),
   dispatch =>({})
-)(Records)
+)(RecordsCurrent)
