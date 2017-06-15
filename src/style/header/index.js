@@ -3,15 +3,18 @@ import { StyleSheet } from 'aphrodite/no-important';
 export default StyleSheet.create({
     top:{
         justifyContent:'space-between',
-        padding:16,
+        paddingLeft:16,
+        paddingRight:16,
+        height:50,
+        overflow:'hidden'
     },
     openNav:{
         width:19,
-        cursor:'pointer'
+        cursor:'pointer',
     },
     add:{
         width:16,
-        cursor:'pointer'
+        cursor:'pointer',
     },
     titleText:{
         color: '#ffffff',
@@ -21,12 +24,18 @@ export default StyleSheet.create({
     },
     days:{
         width:'100%',
-        overflow:'hidden'
+        height:79,
+        overflow:'hidden',
+        backgroundColor:'#242426'
     },
     list:{
         whiteSpace: 'nowrap',
         maxWidth:'100%',
         userSelect: 'none',
+        height:79,
+        display:'flex',
+        flexNegative: 0,
+        flexShrink: 0,
     },
     border:{
         position:'absolute',
@@ -45,7 +54,6 @@ export default StyleSheet.create({
         textAlign:'center',
         fontSize:12,
         color: '#fac054',
-        marginTop:10
     },
     span:{
         display:'block',

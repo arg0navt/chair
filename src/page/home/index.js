@@ -6,6 +6,8 @@ import _ from 'underscore'
 import { css } from 'aphrodite/no-important';
 import g from '../../style/global'
 import t from '../../style/table'
+import Days from '../../ui/panels/days'
+import { FilterTable } from '../../ui/panels/filterTable'
 
 const timePx = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30',]
 
@@ -92,6 +94,8 @@ class Home extends Component{
     }
     render(){
         return(
+            <div>
+            <Days />
             <div className={css(t.table)}>
                 <div className={css(g.flex, t.numbers)}>
                     <div className={css(t.num)}><p className={css(t.numtext)}>№1</p></div>
@@ -99,65 +103,27 @@ class Home extends Component{
                     <div className={css(t.num)}><p className={css(t.numtext)}>№3</p></div>
                     <div className={css(t.num)}><p className={css(t.numtext)}>№4</p></div>
                     <div className={css(t.num)}><p className={css(t.numtext)}>№5</p></div>
+                    <div className={css(t.num)}><p className={css(t.numtext)}>№6</p></div>
+                    <div className={css(t.num)}><p className={css(t.numtext)}>№7</p></div>
                 </div>
                 <div className={css(g.flex, t.tableWrap)} id="tableWrap">
                     <div className={css(t.columTime)}>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>09</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>09</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>10</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>10</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>11</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>11</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>12</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>12</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>13</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>13</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>14</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>14</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>15</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>15</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>16</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>16</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>17</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>17</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>18</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>18</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>19</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>19</span><span className={css(t.timeSpan)}>30</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>20</span><span className={css(t.timeSpan)}>00</span></p></div>
-                        <div className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>20</span><span className={css(t.timeSpan)}>30</span></p></div>
+                        {timePx.map((item, index)=> {
+                            const h = item.slice(0,2)
+                            const m = item.slice(3,5)
+                            return <div key={index} className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>{h}</span><span className={css(t.timeSpan)}>{m}</span></p></div>
+                        })}
                     </div>
                     <div className={css(t.itemWrap)}>
                         <div className={css(t.linWrap)}>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
-                            <div className={css(t.lin)}></div>
+                            {timePx.map((item, index) => <div key={index} className={css(t.lin)}></div>)}
                             <div className={css(g.flex, t.items)}>
                                 <Column absent={absent} busy={busy} />
                                 <Column absent={absent2} busy={busy2} />
                                 <Column absent={absent3} busy={busy3} />
                                 <Column absent={absent4} busy={busy4} />
+                                <Column absent={absent5} busy={busy5} />
+                                <Column absent={absent5} busy={busy5} />
                                 <Column absent={absent5} busy={busy5} />
                             </div>
                             <div className={css(t.past)} style={{height:`${this.state.past}px`}}>
@@ -166,24 +132,8 @@ class Home extends Component{
                         </div>
                     </div>
                 </div>
-                <div className={css(t.filter)}>
-                    <div className={css(t.filterItem)}>
-                        <p className={css(t.filtertext, t.textActive)}>Стрижка<span className={css(t.filterspan, t.textActive)}>Короткие волосы</span></p>
-                        <div className={css(t.filterBorder, t.borderActive)}></div>
-                    </div>
-                    <div className={css(t.filterItem)}>
-                        <p className={css(t.filtertext)}>Стрижка<span className={css(t.filterspan)}>Средние волосы</span></p>
-                        <div className={css(t.filterBorder)}></div>
-                    </div>
-                    <div className={css(t.filterItem)}>
-                        <p className={css(t.filtertext)}>Стрижка<span className={css(t.filterspan)}>Длинные волосы</span></p>
-                        <div className={css(t.filterBorder)}></div>
-                    </div>
-                    <div className={css(t.filterItem)}>
-                        <p className={css(t.filtertext, t.soloText)}>Маникюр</p>
-                        <div className={css(t.filterBorder)}></div>
-                    </div>
-                </div>
+                <FilterTable />
+            </div>
             </div>
         )
     }

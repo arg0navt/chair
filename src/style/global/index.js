@@ -7,8 +7,9 @@ export default StyleSheet.create({
     },
     top:{
         width:'100%',
-        height: 128,
+        height: 50,
         backgroundColor: '#242426',
+        overflow:'hidden'
     },
     flex:{
         display: 'flex',

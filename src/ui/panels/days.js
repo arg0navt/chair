@@ -7,32 +7,7 @@ import { IconNav, IconAdd } from '../icons'
 import h from '../../style/header'
 import g from '../../style/global'
 
-
-const Top = () => (
-    <div className={css(g.flex, h.top)}>
-        <div className={css(h.openNav)}>
-            <IconNav className={css(h.nav)} />
-        </div>
-        <div className={css(h.title)}>
-            <p className={css(h.titleText)}>Запись</p>
-        </div>
-        <div className={css(h.add)}>
-            <IconAdd className={css(h.add)} />
-        </div>
-    </div>
-)
-
-const options = {
-    touchAction:'compute',
-    recognizers: {
-        tap: {
-            time: 600,
-            threshold: 100
-        }
-    }
-}
-
-class Panel extends Component{
+class Home extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -63,10 +38,8 @@ class Panel extends Component{
     }
     render(){
         return(
-            <div className={css(h.header)}> 
-                <Top />
-                <div className={css(h.days)}>
-                    <Hammer onPanStart={this.start.bind(this)} onPan={this.pan.bind(this)} onPanEnd={this.end.bind(this)} className={css(h.list)} options={options} style={{transform: `translate3d(${this.state.x}px, 0px, 0px)`}}>
+            <div className={css(h.days)}>
+                    <Hammer onPanStart={this.start.bind(this)} onPan={this.pan.bind(this)} onPanEnd={this.end.bind(this)} className={css(h.list)} style={{transform: `translate3d(${this.state.x}px, 0px, 0px)`}}>
                     <div>
                         <div className="itemDay">
                             <p className={css(h.text)}>апр<span className={css(h.span, h.actionSpan)}>10</span>пн</p>
@@ -115,7 +88,6 @@ class Panel extends Component{
                         </div>
                     </Hammer>
                 </div>
-            </div>
         )
     }
 }
@@ -125,4 +97,4 @@ export default connect(
     Store: state
   }),
   dispatch =>({})
-)(Panel)
+)(Home)
