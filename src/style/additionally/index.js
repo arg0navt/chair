@@ -38,8 +38,11 @@ export default StyleSheet.create({
         width:'100%',
         height:'auto',
     },
-    name:{
-        fontSize:15
+    itemName:{
+        fontSize:15,
+        whiteSpace: 'pre-wrap',
+        wordWrap: 'break-word',
+        userModify: 'read-write-plaintext-only'
     },
     buttonControll:{
         marginTop:15,
@@ -85,5 +88,86 @@ export default StyleSheet.create({
     },
     wrapData:{
         width:'100%'
+    },
+    itemLogin:{
+        color: '#b8b8b8',
+        fontSize: 12,
+        marginTop: 10
+    },
+    itemMin:{
+        height:70,
+    },
+    itemBorder:{
+        position:'relative',
+        ':after':{
+            height:15,
+            width:3,
+            backgroundColor:'#fac054',
+            position:'absolute',
+            right:0,
+            top:0,
+            bottom:0,
+            margin:'auto',
+            display:'block',
+            content:'""'
+        }
+    },
+    wrapItem:{
+        position:'relative',
+        height:70
+    },
+    deleteBlock:{
+        position:'absolute',
+        width:'100%',
+        height:'100%',
+        overflow:'hidden',
+        top:0,
+        left:0,
+        backgroundColor: '#fac054',
+        justifyContent:'flex-end',
+        zIndex:1,
+        cursor:'pointer'
+    },
+    deleteIcon:{
+        width:16,
+        height:'auto',
+        marginRight:17,
+    },
+    itemAbsolute:{
+        position:'absolute',
+        top:0,
+        left:0,
+        zIndex:2,
+        width:'100%',
+        backgroundColor:'#050505',
+        transition:'.1s all ease-in-out'
+    },
+    buttonAdd:{
+        display:'block',
+        width:'90%',
+        height:54,
+        backgroundColor: '#fac054',
+        position:'fixed',
+        margin:'auto',
+        zIndex:3,
+        left:0,
+        right:0,
+        bottom:30
+    },
+    buttonText:{
+        textAlign:'center',
+        color: '#605238',
+        fontSize:15,
+        fontWeight: 700,
+        letterSpacing:'.03em',
+        lineHeight:'54px'
+    },
+    buttonAddIcon:{
+        width:15,
+        height:'auto',
+        marginRight:10
+    },
+    paddingBottom:{
+        paddingBottom:90
     }
 })
