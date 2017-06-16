@@ -8,6 +8,7 @@ import RecordsHistory from './page/records/history'
 import Control from './page/control'
 import ControlHairdresser from './page/control/hairdresser'
 import ControlArmchairs from './page/control/armchairs'
+import AddHairdresser from './page/control/add'
 
 export const router = (
     <Route path="/" component={AppWrap}>
@@ -20,6 +21,7 @@ export const router = (
         <Route path="/control" component={Control}>
             <IndexRoute component={ControlHairdresser} />
             <Route path="/control/hairdresser" component={ControlHairdresser}></Route>
+            <Route path="/control/hairdresser/add" component={AddHairdresser}></Route>
             <Route path="/control/armchairs" component={ControlArmchairs}></Route>
         </Route>
     </Route>

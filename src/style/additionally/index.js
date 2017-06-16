@@ -169,5 +169,11 @@ export default StyleSheet.create({
     },
     paddingBottom:{
         paddingBottom:90
+    },
+    formAdd:{
+        padding:15
+    },
+    noBorder:{
+        border:0,
     }
 })
