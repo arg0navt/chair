@@ -43,8 +43,8 @@ const busy3 = [{start:'10:00',end:'11:00'},{start:'12:00',end:'13:30'}]
 const absent4 = [{start:'13:00',end:'14:00'},{start:'14:00',end:'14:30'}]
 const busy4 = [{start:'10:00',end:'11:00'},{start:'11:00',end:'11:30'}]
 
-const absent5 = [{start:'15:00',end:'15:30'},{start:'12:00',end:'13:00'}]
-const busy5 = [{start:'11:00',end:'11:30'},{start:'14:00',end:'15:00'}]
+const absent5 = [{start:'09:00',end:'09:30'},{start:'12:00',end:'13:00'}]
+const busy5 = [{start:'10:00',end:'10:30'},{start:'14:00',end:'15:00'}]
 
 const Column = ({absent, busy}) => {
     let free = timePx
@@ -80,7 +80,8 @@ class Home extends Component{
         super(props)
         this.state = {
             time: moment('2016-12-31 11:32').format('LT'),
-            past: 0
+            past: 0,
+            popup:false
         }
     }
     componentDidMount(){
@@ -133,6 +134,28 @@ class Home extends Component{
                     </div>
                 </div>
                 <FilterTable />
+                {this.state.popup != false ? (
+                    <div>
+                        <div className={css(t.quickViewShadow)}></div>
+                <div className={css(g.flex, t.quickViewWrap)}>
+                    <div className={css(t.quickView)}>
+                        <div className={css(t.topView)}>
+                            <p className={css(t.topViewText)}>09:15-10:45</p>
+                            <div className={css(g.flex, t.nuber)}><p  className={css(t.nuberText)}>Кресло<span className={css(t.nuberSpan)}>4</span></p></div>
+                        </div>
+                        <div className={css(t.viewContent)}>
+                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Тип стрижки:</span>Стрижка коротких волос</p>
+                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Клиент:</span><font className={css(t.viewContentFont)}>Елена Иванова</font><font className={css(t.viewContentFont)}>8 (900) 123-45-67</font></p>
+                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Мастер:</span>Евгения Петрова</p>
+                        </div>
+                        <div className={css(g.flex, t.viewBottom)}>
+                            <div className={css(g.flex, t.viewButton, t.viewButton1)}>Перенести</div>
+                            <div className={css(g.flex, t.viewButton, t.viewButton2)}>Готово</div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                ) : (<div></div>)}
             </div>
             </div>
         )

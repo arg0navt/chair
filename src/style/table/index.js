@@ -31,7 +31,10 @@ export default StyleSheet.create({
     },
     columTime:{
         width:75,
-        overflow:'hidden'
+        overflow:'hidden',
+        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
+            width:'calc(100vw - 85.8%)'
+        }
     },
     itemTime:{
         width:'100%',
@@ -45,7 +48,10 @@ export default StyleSheet.create({
         textAlign:'center',
         fontWeight:500,
         position:'absolute',
-        top:0
+        top:0,
+        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
+            fontSize:16
+        }
     },
     timeSpan:{
         fontSize:13,
@@ -54,18 +60,27 @@ export default StyleSheet.create({
         marginTop:1,
         display: 'block',
         float: 'left',
-        fontWeight:700
+        fontWeight:700,
+        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
+            marginLeft:3
+        }
     },
     timeSpan1:{
         color: '#636363',
         display: 'block',
         float: 'left',
         marginLeft:15,
-        fontWeight:700
+        fontWeight:700,
+        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
+            marginLeft:7
+        }
     },
     itemWrap:{
         width:'calc(100% - 75px)',
         position:'relative',
+        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
+            width:'calc(100vw - 14.2%)'
+        }
     },
     lin:{
         width:'100%',
@@ -127,7 +142,7 @@ export default StyleSheet.create({
         color: '#37471a',
         fontFamily: '"Helvetica Neue Cyr"',
         textAlign:'center',
-        padding:5,
+        paddingTop:5,
         fontSize:12
     },
     filter:{
@@ -190,5 +205,100 @@ export default StyleSheet.create({
     },
     table:{
         paddingTop:129
+    },
+    quickViewShadow:{
+        position:'fixed',
+        width:'100%',
+        height:'100%',
+        top:0,
+        left:0,
+        background:'rgba(0,0,0,.6)',
+        zIndex:19
+    },
+    quickViewWrap:{
+        position:'fixed',
+        width:'100%',
+        height:'100%',
+        top:0,
+        left:0,
+        zIndex:20,
+    },
+    quickView:{
+        width:225,
+        backgroundColor: '#242426',
+        overflow:'hidden',
+        borderRadius: 10,
+    },
+    topView:{
+        height:50,
+        borderBottom:'1px solid rgba(255,255,255,.1)',
+        paddingLeft:20,
+        position:'relative'
+    },
+    topViewText:{
+        color: '#fac054',
+        fontSize: 17,
+        lineHeight:'50px'
+    },
+    nuber:{
+        width:54,
+        height:54,
+        borderRadius:54,
+        overflow:'hidden',
+        backgroundColor: '#fac054',
+        position:'absolute',
+        right:15,
+        top:23,
+    },
+    nuberText:{
+        color: '#4c3711',
+        fontSize:10,
+        textAlign:'center'
+    },
+    nuberSpan:{
+        display:'block',
+        fontSize:22,
+        color: '#4c3711',
+        lineHeight:1
+    },
+    viewContent:{
+        padding:20,
+    },
+    viewContentText:{
+        color: '#ffffff',
+        fontSize:13,
+        marginBottom:15,
+        ':last-child':{
+            marginBottom:0
+        }
+    },
+    viewContentSpan:{
+        color: '#7b7b7b',
+        fontSize:13,
+        display:'block'
+    },
+    viewContentFont:{
+        display:'block'
+    },
+    viewBottom:{
+        borderTop: '1px solid rgba(255,255,255,.1)',
+        height:45,
+        overflow:'hidden'
+    },
+    viewButton:{
+        height:45,
+        width:'50%',
+        cursor:'pointer'
+    },
+    viewButton1:{
+        color: '#fac054',
+        fontSize:13,
+    },
+    viewButton2:{
+        backgroundColor: '#fac054',
+        color: '#4c3711',
+        fontSize:13,
+        textTransform: 'uppercase',
+        fontWeight: 700,
     }
 })

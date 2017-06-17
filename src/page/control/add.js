@@ -27,7 +27,7 @@ class AddHairdresser extends Component{
     }
     render(){
         return(
-            <div className={css(a.formAdd)}>
+            <div className={css(a.formAdd, a.padding,)}>
                 <form>
                 <div className='inputBlock'>
                     <input className='inputInput' type="text" id="firstName" ref={(firstName) => this.firstName = firstName} value={this.state.firstName} onChange={this.change.bind(this, 'firstName')} />
