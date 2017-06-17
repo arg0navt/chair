@@ -29,8 +29,9 @@ const array = [
 class ControlHairdresser extends Component{
     render(){
         return(
-            <div className={css(a.paddingBottom)}>
+            <div className={css(a.padding)}>
                 {array.map((item, index) => <ItemHairdresser key={index} item={item}/>)}
+                <div className={css(a.shadow)}></div>
                 <Link className={css(g.flex, a.buttonAdd)} to="/control/hairdresser/add"><p className={css(a.buttonText)}><img className={css(a.buttonAddIcon)} src={'/img/add.png'} alt=""/>Добавить нового парикмахера</p></Link>
             </div>
         )

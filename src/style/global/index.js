@@ -9,7 +9,11 @@ export default StyleSheet.create({
         width:'100%',
         height: 50,
         backgroundColor: '#242426',
-        overflow:'hidden'
+        overflow:'hidden',
+        position:'fixed',
+        top:0,
+        left:0,
+        zIndex:10
     },
     flex:{
         display: 'flex',

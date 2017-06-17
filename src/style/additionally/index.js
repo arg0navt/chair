@@ -6,6 +6,10 @@ export default StyleSheet.create({
         height:45,
         overflow:'hidden',
         backgroundColor: '#242426',
+        position:'fixed',
+        top:50,
+        left:0,
+        zIndex:10
     },
     tabItem:{
         flex:1
@@ -149,7 +153,7 @@ export default StyleSheet.create({
         backgroundColor: '#fac054',
         position:'fixed',
         margin:'auto',
-        zIndex:3,
+        zIndex:10,
         left:0,
         right:0,
         bottom:30
@@ -167,13 +171,23 @@ export default StyleSheet.create({
         height:'auto',
         marginRight:10
     },
-    paddingBottom:{
-        paddingBottom:90
+    padding:{
+        paddingBottom:90,
+        paddingTop:95
     },
     formAdd:{
         padding:15
     },
     noBorder:{
         border:0,
+    },
+    shadow:{
+        position:'fixed',
+        width:'100%',
+        height:120,
+        bottom:0,
+        left:0,
+        boxShadow:'inset -20px -100px 20px #050505',
+        zIndex:3
     }
 })

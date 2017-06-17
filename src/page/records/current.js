@@ -22,7 +22,7 @@ const array = [
 class RecordsCurrent extends Component{
     render(){
         return(
-            <div>
+            <div className={css(a.padding)}>
                 {array.map((item, index) => (
                     <Item key={index} item={item} />
                 ))}

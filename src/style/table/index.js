@@ -187,5 +187,8 @@ export default StyleSheet.create({
     },
     textActive:{
         color: '#fac054',
+    },
+    table:{
+        paddingTop:129
     }
 })

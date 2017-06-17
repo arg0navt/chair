@@ -26,7 +26,11 @@ export default StyleSheet.create({
         width:'100%',
         height:79,
         overflow:'hidden',
-        backgroundColor:'#242426'
+        backgroundColor:'#242426',
+        position:'fixed',
+        top:50,
+        left:0,
+        zIndex:10
     },
     list:{
         whiteSpace: 'nowrap',
