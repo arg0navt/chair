@@ -92,6 +92,7 @@ class Home extends Component{
         let positionM = 1.5 * procentM
         let position = positionH+positionM
         this.setState({past:position})
+        this.props.Store.login == true ? setTimeout(()=>{this.wrap.scrollTop = position - this.wrap.clientHeight / 2},10) : false
     }
     render(){
         return(
@@ -107,7 +108,7 @@ class Home extends Component{
                     <div className={css(t.num)}><p className={css(t.numtext)}>№6</p></div>
                     <div className={css(t.num)}><p className={css(t.numtext)}>№7</p></div>
                 </div>
-                <div className={css(g.flex, t.tableWrap)} id="tableWrap">
+                <div className={css(g.flex, t.tableWrap)} id="tableWrap" ref={(wrap) => this.wrap = wrap}>
                     <div className={css(t.columTime)}>
                         {timePx.map((item, index)=> {
                             const h = item.slice(0,2)

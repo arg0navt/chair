@@ -20,7 +20,7 @@ class Navigation extends Component{
             <div>
                 <Hammer onSwipe={this.swipe.bind(this)}>
                 <div>
-                <div className={css(g.flex, n.nav)} style={this.props.Store.nav == false ? {left:-252} : {left:0}}>
+                <div className={css(g.flex, n.nav)} style={this.props.Store.nav == false ? {left:-1052} : {left:0}}>
                     <div className={css(n.navWrap)}>
                         <div className={css(n.profil)}>
                             <div className={css(n.avatar)}><img className={css(n.avatarPich)} src={'/img/avatar.png'} alt=""/></div>

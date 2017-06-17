@@ -7,13 +7,20 @@ import Navigation from './navigation'
 import Panel from '../panels/panel'
 
 class AppWrap extends Component{
+    componentDidMount(){
+        this.props.Store.login == true ? browserHistory.push('/home') : browserHistory.push('/')
+    }
     render(){
         return(
             <div className={css(g.app)}>
                 <Navigation />
-                <div className={css(g.top)}>
-                    <Panel />
-                </div>
+                {this.props.Store.login != false ? (
+                    <div className={css(g.top)}>
+                        <Panel />
+                    </div>
+                ) : (
+                    <div></div>
+                )}
                 {this.props.children}
             </div>
         )
