@@ -49,9 +49,9 @@ const Column = ({absent, busy}) => {
     })
     return (
         <div className={css(t.itemsColumn)}>
-            {absent.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'absent'} item={{start:item.start, end: item.end, nuber:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
-            {busy.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'busy'} item={{start:item.start, end: item.end, nuber:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
-            {free.map((item, index)=> <Info key={index} timeStart={item} timeEnd={''} status={'free'} item={{start:item, end: '', nuber:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
+            {absent.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'absent'} item={{start:item.start, end: item.end, number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
+            {busy.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'busy'} item={{start:item.start, end: item.end, number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
+            {free.map((item, index)=> <Info key={index} timeStart={item} timeEnd={''} status={'free'} item={{start:item, end: '', number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
         </div>
     )
 }

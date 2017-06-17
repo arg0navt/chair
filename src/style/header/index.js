@@ -47,9 +47,6 @@ export default StyleSheet.create({
         left:0, 
         width:'100%',
         height:'100%',
-        ':hover':{
-            border: '4px solid #f1c757',
-        }
     },
     action:{
         border: '4px solid #f1c757',
@@ -57,11 +54,14 @@ export default StyleSheet.create({
     text:{
         textAlign:'center',
         fontSize:12,
+        color: '#7b7b7b',
+    },
+    active:{
         color: '#fac054',
     },
     span:{
         display:'block',
-        fontWeight:700,
+        fontWeight: 500,
         fontSize:19,
         color:'#fff'
     },

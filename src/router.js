@@ -20,7 +20,7 @@ export const router = (
             <Route path="/records/current" component={RecordsCurrent}></Route>
             <Route path="/records/history" component={RecordsHistory}></Route>
         </Route>
-        <Route path="/control" component={Control}>
+        <Route path="/control" component={Control} title={'Мои записи'}>
             <IndexRoute component={ControlHairdresser} />
             <Route path="/control/hairdresser" component={ControlHairdresser}></Route>
             <Route path="/control/hairdresser/add" component={AddHairdresser}></Route>

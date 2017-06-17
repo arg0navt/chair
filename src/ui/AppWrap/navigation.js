@@ -5,6 +5,30 @@ import { css } from 'aphrodite/no-important'
 import Hammer from 'react-hammerjs';
 import g from '../../style/global'
 import n from '../../style/navigation'
+import { Link } from 'react-router';
+
+const nav = [
+    {
+        name:'Календарь',
+        href:'/entry',
+        icon:'/img/calendar.png'
+    },
+    {
+        name:'Мои записи',
+        href:'/control',
+        icon:'/img/book-2.png'
+    },
+    {
+        name:'Управление',
+        href:'/records',
+        icon:'/img/compose.png'
+    },
+    {
+        name:'Помощь',
+        href:'',
+        icon:'/img/-.png'
+    }
+]
 
 class Navigation extends Component{
     swipe(ev){
@@ -27,22 +51,14 @@ class Navigation extends Component{
                             <p className={css(n.name)}>Елена Петрова</p>
                         </div>
                         <div className={css(n.list)}>
-                            <div className={css(n.item)}>
-                                <div className={css(g.flex, n.icon)}><img className={css(n.iconimg, n.icon1)} src={'/img/calendar.png'} alt=""/></div>
-                                <p className={css(n.text)}>Календарь</p>
-                            </div>
-                            <div className={css(n.item)}>
-                                <div className={css(g.flex,n.icon)}><img className={css(n.iconimg, n.icon2)} src={'/img/book-2.png'} alt=""/></div>
-                                <p className={css(n.text)}>Мои записи</p>
-                            </div>
-                            <div className={css(n.item)}>
-                                <div className={css(g.flex,n.icon)}><img className={css(n.iconimg, n.icon3)} src={'/img/compose.png'} alt=""/></div>
-                                <p className={css(n.text)}>Управление</p>
-                            </div>
-                            <div className={css(n.item)}>
-                                <div className={css(g.flex,n.icon)}><img className={css(n.iconimg, n.icon4)} src={'/img/-.png'} alt=""/></div>
-                                <p className={css(n.text)}>Помощь</p>
-                            </div>
+                            {nav.map((item, index) => {
+                                return (
+                                    <Link key={index} to={item.href} className={css(n.item)} onClick={this.hide.bind(this)}>
+                                        <div className={css(g.flex, n.icon)}><img className={css(n.iconimg, n[`icon${index+1}`])} src={item.icon} alt={item.name}/></div>
+                                        <p className={css(n.text)}>{item.name}</p>
+                                    </Link>
+                                )}
+                            )}
                         </div>
                     </div>
                 </div>

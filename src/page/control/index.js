@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { css } from 'aphrodite/no-important'
 import Hammer from 'react-hammerjs';
-import { Tab } from '../../ui/panels/tab'
+import Tab from '../../ui/panels/tab'
 import g from '../../style/global'
 import a from '../../style/additionally'
 
@@ -16,7 +16,7 @@ class Control extends Component{
     render(){
         return(
             <div>
-                <Tab tab={links} />
+                <Tab active={'/control'} tab={links} />
                 {this.props.children}
             </div>
         )

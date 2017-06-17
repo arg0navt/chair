@@ -8,7 +8,7 @@ import Panel from '../panels/panel'
 
 class AppWrap extends Component{
     componentDidMount(){
-        this.props.Store.login == true ? browserHistory.push('/entry') : browserHistory.push('/')
+        this.props.Store.login == true ? this.props.Store.routing.locationBeforeTransitions.pathname == '/' ? browserHistory.push('/entry') : false : false
     }
     render(){
         return(
@@ -16,7 +16,7 @@ class AppWrap extends Component{
                 <Navigation />
                 {this.props.Store.login != false ? (
                     <div className={css(g.top)}>
-                        <Panel />
+                        <Panel title={this.props.routes[1].title} />
                     </div>
                 ) : (
                     <div></div>

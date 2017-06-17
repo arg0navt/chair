@@ -5,7 +5,7 @@ export default StyleSheet.create({
         width:'100%',
         height:45,
         background:'#050505',
-        paddingLeft:75,
+        paddingLeft:'14.2%',
         userSelect: 'none',
     },
     num:{
@@ -46,39 +46,38 @@ export default StyleSheet.create({
         fontFamily: '"Helvetica Neue Cyr"',
         fontSize:19,
         textAlign:'center',
-        fontWeight:500,
         position:'absolute',
         top:0,
-        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
-            fontSize:16
+        '@media screen and (max-width: 370px)':{
+            fontSize:14
         }
     },
     timeSpan:{
         fontSize:13,
         color: '#636363',
-        marginLeft:7,
-        marginTop:1,
+        marginLeft:3,
+        marginTop:0,
         display: 'block',
         float: 'left',
-        fontWeight:700,
-        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
-            marginLeft:3
+        '@media screen and (max-width: 370px)':{
+            marginLeft:3,
+            marginTop:1,
+            fontSize:11,
         }
     },
     timeSpan1:{
         color: '#636363',
         display: 'block',
         float: 'left',
-        marginLeft:15,
-        fontWeight:700,
-        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
-            marginLeft:7
+        marginLeft:5,
+        '@media screen and (max-width: 370px)':{
+            marginLeft:5
         }
     },
     itemWrap:{
         width:'calc(100% - 75px)',
         position:'relative',
-        '@media screen and (max-width: 500px) , screen and (max-height: 750px)':{
+        '@media screen and (max-width: 500px)':{
             width:'calc(100vw - 14.2%)'
         }
     },
@@ -164,14 +163,14 @@ export default StyleSheet.create({
         }
     },
     filterItem:{
-        width:115,
         height:45,
         backgroundColor: '#242426',
         position:'relative',
         marginRight:5,
         cursor:'pointer',
         display:'inline-block',
-        verticalAlign:'top'
+        verticalAlign:'top',
+        paddingRight:15
     },
     soloText:{
         paddingTop:14
@@ -190,7 +189,7 @@ export default StyleSheet.create({
         border: '3px solid #fac054',
     },
     filtertext:{
-        fontWeight: 700,
+        fontWeight: 500,
         fontSize: 15,
         lineHeight:1,
         paddingTop:9,

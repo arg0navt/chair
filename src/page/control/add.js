@@ -27,7 +27,7 @@ class AddHairdresser extends Component{
     }
     render(){
         return(
-            <div className={css(a.formAdd, a.padding,)}>
+            <div className={css(a.formAdd, a.padding)}>
                 <form>
                 <div className='inputBlock'>
                     <input className='inputInput' type="text" id="firstName" ref={(firstName) => this.firstName = firstName} value={this.state.firstName} onChange={this.change.bind(this, 'firstName')} />
@@ -45,7 +45,6 @@ class AddHairdresser extends Component{
                     <input className='inputInput' type="password" id="" ref={(password) => this.password = password} value={this.state.password} onChange={this.change.bind(this, 'password')} />
                     <label htmlFor="" className={this.state.password != "" ? 'inputLabel active' : 'inputLabel'}>Пароль</label>
                 </div>
-                <button className={css(g.flex, a.buttonAdd, a.noBorder)}><p className={css(a.buttonText)}><img className={css(a.buttonAddIcon)} src={'/img/add.png'} alt=""/>Добавить нового парикмахера</p></button>
                 </form>
             </div>
         )

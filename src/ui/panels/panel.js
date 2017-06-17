@@ -17,7 +17,7 @@ const Top = (props) => (
             <p className={css(h.titleText)}>Запись</p>
         </div>
         <div className={css(h.add)}>
-            <IconAdd className={css(h.add)} />
+            {props.Store.routing.locationBeforeTransitions.pathname == '/entry' ? <IconAdd className={css(h.add)} />: <div></div>}
         </div>
     </div>
 )

@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Helvetica Neue Cyr";
+    font-weight: normal;
 }
 a{
     text-decoration: none;
@@ -32,6 +33,10 @@ svg{
     display: flex;
     justify-content:center;
     align-items:center
+}
+.activeTabLink{
+    color: #fff !important;
+    font-weight: 500 !important;
 }
 .activeTabLink:after{
     width:100%;

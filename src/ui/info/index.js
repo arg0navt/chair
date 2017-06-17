@@ -34,7 +34,7 @@ class Info extends Component{
     render(){
         return(
             <div onClick={this.view.bind(this)} style={{top:this.state.start,height:this.state.height,background:this.state.background}} className={css(t.info)}>
-                <p className={css(t.infoName)}>{this.props.timeStart}</p>
+                <p className={css(t.infoName)} style={this.props.status == "absent" ? {color:'#fff'} : {color:'#37471a'}}>{this.props.timeStart}</p>
             </div>
         )
     }

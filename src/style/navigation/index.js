@@ -16,6 +16,8 @@ export default StyleSheet.create({
     nav:{
         width:252,
         height:'100%',
+        maxHeight:'100vh',
+        overflowY:'auto',
         position:'fixed',
         boxShadow: '0px 3px 109px #000000',
         backgroundColor: '#1b1b1c',
@@ -24,9 +26,8 @@ export default StyleSheet.create({
         alignItems:'flex-start',
         paddingTop:40,
         paddingBottom:40,
-        overflow:'hidden',
         transition:'.3s all ease-in-out',
-        left:-252
+        left:-252,
     },
     avatar:{
         width:90,
@@ -90,6 +91,7 @@ export default StyleSheet.create({
         height:'auto'
     },
     item:{
+        display:'block',
         marginBottom:26
     },
     text:{

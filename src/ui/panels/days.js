@@ -42,7 +42,7 @@ class Home extends Component{
                     <Hammer onPanStart={this.start.bind(this)} onPan={this.pan.bind(this)} onPanEnd={this.end.bind(this)} className={css(h.list)} style={{transform: `translate3d(${this.state.x}px, 0px, 0px)`}}>
                     <div>
                         <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span, h.actionSpan)}>10</span>пн</p>
+                            <p className={css(h.text, h.active)}>апр<span className={css(h.span, h.actionSpan)}>10</span>пн</p>
                             <div className={css(h.border, h.action)}></div>
                         </div>
                         <div className="itemDay">

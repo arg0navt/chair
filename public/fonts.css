@@ -1,24 +1,4 @@
 @font-face {
-	font-family: "Helvetica Neue Cyr";
-	src: url("./fonts/fonts/HelveticaNeueCyr-Roman.eot");
-	src: url("./fonts/fonts/HelveticaNeueCyr-Roman.eot?#iefix") format("embedded-opentype"),
-		url("./fonts/fonts/HelveticaNeueCyr-Roman.woff") format("woff"),
-		url("./fonts/HelveticaNeueCyr-Roman.ttf") format("truetype");
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: "Helvetica Neue Cyr";
-	src: url("./fonts/HelveticaNeueCyr-Medium.eot");
-	src: url("./fonts/HelveticaNeueCyr-Medium.eot?#iefix") format("embedded-opentype"),
-		url("./fonts/HelveticaNeueCyr-Medium.woff") format("woff"),
-		url("./fonts/HelveticaNeueCyr-Medium.ttf") format("truetype");
-	font-weight: 500;
-	font-style: normal;
-}
-
-@font-face {
 	font-family: "AA Bebas Neue";
 	src: url("/fonts/AABebasNeue.eot");
 	src: url("/fonts/AABebasNeue.eot?#iefix") format("embedded-opentype"),
@@ -26,4 +6,20 @@
 		url("/fonts/AABebasNeue.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;
+}
+
+@font-face {
+    font-family: "Helvetica Neue Cyr";
+    src: url(fonts/HelveticaNeueCyr-Roman.eot);
+    src: url(fonts/HelveticaNeueCyr-Roman.eot?#iefix) format("embedded-opentype"),url(fonts/HelveticaNeueCyr-Roman.woff) format("woff"),url(fonts/HelveticaNeueCyr-Roman.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "Helvetica Neue Cyr";
+    src: url(fonts/HelveticaNeueCyr-Medium.eot);
+    src: url(fonts/HelveticaNeueCyr-Medium.eot?#iefix) format("embedded-opentype"),url(fonts/HelveticaNeueCyr-Medium.woff) format("woff"),url(fonts/HelveticaNeueCyr-Medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal
 }

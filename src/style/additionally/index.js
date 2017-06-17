@@ -12,11 +12,27 @@ export default StyleSheet.create({
         zIndex:10
     },
     tabItem:{
-        flex:1
+        flex:1,
+        position:'relative',
+        ':first-child':{
+            ':before':{
+                width:1,
+                height:13,
+                backgroundColor:'rgba(255,255,255,.3)',
+                content:'""',
+                display:'block',
+                position:'absolute',
+                right:0,
+                top:0,
+                bottom:0,
+                margin:'auto'
+            }
+        }
     },
     linkTab:{
+        fontWeight: 'normal',  
         fontSize:12,
-        color:'#ffffff',
+        color: '#b8b8b8',
         position:'relative',
     },
     item:{
@@ -43,6 +59,7 @@ export default StyleSheet.create({
         height:'auto',
     },
     itemName:{
+        fontWeight: 500,
         fontSize:15,
         whiteSpace: 'pre-wrap',
         wordWrap: 'break-word',
@@ -216,5 +233,18 @@ export default StyleSheet.create({
         color: '#fac054',
         marginLeft:43,
         marginRight:43,
+    },
+    activeTabLink:{
+        color: '#fff',
+        fontWeight: 500,
+        ':after':{
+            width:'100%',
+            height:3,
+            backgroundColor: '#fac054',
+            content:'""',
+            display:'block',
+            position:'absolute',
+            bottom:-14,
+        } 
     }
 })
