@@ -14,7 +14,7 @@ import AddHairdresser from './page/control/add'
 export const router = (
     <Route path="/" component={AppWrap}>
         <IndexRoute component={Login} />
-        <Route path="/home" component={Home}></Route>
+        <Route path="/entry" component={Home}></Route>
         <Route path="/records" component={Records}>
             <IndexRoute component={RecordsCurrent} />
             <Route path="/records/current" component={RecordsCurrent}></Route>

@@ -8,28 +8,9 @@ import g from '../../style/global'
 import t from '../../style/table'
 import Days from '../../ui/panels/days'
 import { FilterTable } from '../../ui/panels/filterTable'
+import Info from '../../ui/info'
 
 const timePx = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30',]
-
-const Info = ({timeStart, timeEnd, status}) => {
-    const start = _.indexOf(timePx, timeStart) * 75 + 1
-    const end = _.indexOf(timePx, timeEnd) * 75 - 5
-    let height = end - start
-    let background = '#8eae55'
-    if (status == 'absent'){
-        background = '#323136'
-    } else if (status == 'busy'){
-        background = '#fac054'
-    } else if (status == 'free'){
-        background = '#8eae55'
-        height = 70
-    }
-    return (
-        <div style={{top:start,height:height,background:background}} className={css(t.info)}>
-            <p className={css(t.infoName)}>{timeStart}</p>
-        </div>
-    )
-}
 
 const absent = [{start:'10:00',end:'11:00'},{start:'14:00',end:'14:30'}]
 const busy = [{start:'12:00',end:'13:00'},{start:'16:00',end:'16:30'}]
@@ -68,9 +49,9 @@ const Column = ({absent, busy}) => {
     })
     return (
         <div className={css(t.itemsColumn)}>
-            {absent.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'absent'} />)}
-            {busy.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'busy'} />)}
-            {free.map((item, index)=> <Info key={index} timeStart={item} timeEnd={''} status={'free'} />)}
+            {absent.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'absent'} item={{start:item.start, end: item.end, nuber:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
+            {busy.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'busy'} item={{start:item.start, end: item.end, nuber:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
+            {free.map((item, index)=> <Info key={index} timeStart={item} timeEnd={''} status={'free'} item={{start:item, end: '', nuber:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
         </div>
     )
 }
@@ -93,6 +74,9 @@ class Home extends Component{
         let position = positionH+positionM
         this.setState({past:position})
         this.props.Store.login == true ? setTimeout(()=>{this.wrap.scrollTop = position - this.wrap.clientHeight / 2},10) : false
+    }
+    toggle(){
+        this.props.toggleView()
     }
     render(){
         return(
@@ -135,19 +119,19 @@ class Home extends Component{
                     </div>
                 </div>
                 <FilterTable />
-                {this.state.popup != false ? (
+                {this.props.Store.viewDetail != false ? (
                     <div>
-                        <div className={css(t.quickViewShadow)}></div>
                 <div className={css(g.flex, t.quickViewWrap)}>
+                <div className={css(t.quickViewShadow)} onClick={this.toggle.bind(this)}></div>
                     <div className={css(t.quickView)}>
                         <div className={css(t.topView)}>
-                            <p className={css(t.topViewText)}>09:15-10:45</p>
-                            <div className={css(g.flex, t.nuber)}><p  className={css(t.nuberText)}>Кресло<span className={css(t.nuberSpan)}>4</span></p></div>
+                            <p className={css(t.topViewText)}>{this.props.Store.detail.start}{this.props.Store.detail.end != '' ? `-${this.props.Store.detail.end}` : ''}</p>
+                            <div className={css(g.flex, t.nuber)}><p  className={css(t.nuberText)}>Кресло<span className={css(t.nuberSpan)}>{this.props.Store.detail.number}</span></p></div>
                         </div>
                         <div className={css(t.viewContent)}>
-                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Тип стрижки:</span>Стрижка коротких волос</p>
-                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Клиент:</span><font className={css(t.viewContentFont)}>Елена Иванова</font><font className={css(t.viewContentFont)}>8 (900) 123-45-67</font></p>
-                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Мастер:</span>Евгения Петрова</p>
+                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Тип стрижки:</span>{this.props.Store.detail.type}</p>
+                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Клиент:</span><font className={css(t.viewContentFont)}>{this.props.Store.detail.name}</font><font className={css(t.viewContentFont)}>{this.props.Store.detail.phone}</font></p>
+                            <p className={css(t.viewContentText)}><span className={css(t.viewContentSpan)}>Мастер:</span>{this.props.Store.detail.master}</p>
                         </div>
                         <div className={css(g.flex, t.viewBottom)}>
                             <div className={css(g.flex, t.viewButton, t.viewButton1)}>Перенести</div>
@@ -166,5 +150,7 @@ export default connect(
   state => ({
     Store: state
   }),
-  dispatch =>({})
+  dispatch =>({
+      toggleView: () => {dispatch({type:'TOGGLE_DETAIL'})},
+  })
 )(Home)

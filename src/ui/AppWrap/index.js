@@ -8,7 +8,7 @@ import Panel from '../panels/panel'
 
 class AppWrap extends Component{
     componentDidMount(){
-        this.props.Store.login == true ? browserHistory.push('/home') : browserHistory.push('/')
+        this.props.Store.login == true ? browserHistory.push('/entry') : browserHistory.push('/')
     }
     render(){
         return(

@@ -213,7 +213,7 @@ export default StyleSheet.create({
         top:0,
         left:0,
         background:'rgba(0,0,0,.6)',
-        zIndex:19
+        zIndex:1
     },
     quickViewWrap:{
         position:'fixed',
@@ -228,6 +228,8 @@ export default StyleSheet.create({
         backgroundColor: '#242426',
         overflow:'hidden',
         borderRadius: 10,
+        position:'relative',
+        zIndex:2,
     },
     topView:{
         height:50,
