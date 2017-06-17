@@ -189,5 +189,32 @@ export default StyleSheet.create({
         left:0,
         boxShadow:'inset -20px -100px 20px #050505',
         zIndex:3
+    },
+    armchair:{
+        height:'100vh',
+    },
+    armchairText:{
+        color:'#fac054',
+        fontSize:14,
+        marginBottom:13,
+        textAlign:'center'
+    },
+    buttonNum:{
+        width:60,
+        height:60,
+        borderRadius:60,
+        backgroundColor: '#fac054',
+        overflow:'hidden',
+        cursor:'pointer'
+    },
+    numIcon:{
+        width:20,
+        height:'auto',
+    },
+    textNum:{
+        fontSize:90,
+        color: '#fac054',
+        marginLeft:43,
+        marginRight:43,
     }
 })
