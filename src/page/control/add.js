@@ -18,6 +18,9 @@ class AddHairdresser extends Component{
             password:''
         }
     }
+    componentSisMount(){
+        window.scrollTop = 0
+    }
     change(key, event){
         const items = this.state[key];
         this.state[key] = event.target.value;
@@ -27,7 +30,7 @@ class AddHairdresser extends Component{
     }
     render(){
         return(
-            <div className={css(a.formAdd, a.padding)}>
+            <div className={css(a.formAdd, a.padding, a.paddingForm)}>
                 <form>
                 <div className='inputBlock'>
                     <input className='inputInput' type="text" id="firstName" ref={(firstName) => this.firstName = firstName} value={this.state.firstName} onChange={this.change.bind(this, 'firstName')} />

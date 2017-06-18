@@ -246,5 +246,12 @@ export default StyleSheet.create({
             position:'absolute',
             bottom:-14,
         } 
+    },
+    paddingForm:{
+        paddingTop:65
+    },
+    linkWrap:{
+        height:45,
+        width:'100%'
     }
 })

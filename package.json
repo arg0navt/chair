@@ -5,9 +5,11 @@
   "dependencies": {
     "aphrodite": "^1.2.1",
     "axios": "^0.16.1",
+    "js-cookie": "^2.1.4",
     "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-axios": "^1.0.2",
+    "react-cookies": "0.0.1",
     "react-dom": "^15.5.4",
     "react-hammerjs": "^0.5.0",
     "react-redux": "^5.0.4",

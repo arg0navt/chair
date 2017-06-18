@@ -60,5 +60,24 @@ export default StyleSheet.create({
         fontWeight: 700,
         color: '#605238',
         marginTop:25
+    },
+    popupWrap:{
+        position:'fixed',
+        width:'100%',
+        height:'100%',
+        top:0,
+        left:0,
+        zIndex:20,
+        backgroundColor:'rgba(0,0,0,.7)'
+    },
+    error:{
+        padding:25,
+        backgroundColor:'#fff',
+        borderRadius:15,
+        maxWidth:300,
+    },
+    errorText:{
+        color:'#000',
+        textAlign:'center'
     }
 })

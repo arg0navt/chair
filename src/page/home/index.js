@@ -97,7 +97,7 @@ class Home extends Component{
                         {timePx.map((item, index)=> {
                             const h = item.slice(0,2)
                             const m = item.slice(3,5)
-                            return <div key={index} className={css(t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>{h}</span><span className={css(t.timeSpan)}>{m}</span></p></div>
+                            return <div key={index} className={css(g.flex, t.itemTime)}><p className={css(t.timeText)}><span className={css(t.timeSpan1)}>{h}</span><span className={css(t.timeSpan)}>{m}</span></p></div>
                         })}
                     </div>
                     <div className={css(t.itemWrap)}>

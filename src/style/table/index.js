@@ -69,10 +69,6 @@ export default StyleSheet.create({
         color: '#636363',
         display: 'block',
         float: 'left',
-        marginLeft:5,
-        '@media screen and (max-width: 370px)':{
-            marginLeft:5
-        }
     },
     itemWrap:{
         width:'calc(100% - 75px)',
@@ -289,7 +285,8 @@ export default StyleSheet.create({
     viewButton:{
         height:45,
         width:'50%',
-        cursor:'pointer'
+        cursor:'pointer',
+        lineHeight:'45px'
     },
     viewButton1:{
         color: '#fac054',

@@ -16,7 +16,7 @@ class Control extends Component{
     render(){
         return(
             <div>
-                <Tab active={'/control'} tab={links} />
+                {this.props.Store.routing.locationBeforeTransitions.pathname != '/control/hairdresser/add' ? <Tab active={'/control'} tab={links} /> : <div></div>}
                 {this.props.children}
             </div>
         )
