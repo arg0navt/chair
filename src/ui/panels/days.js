@@ -10,6 +10,7 @@ import 'moment/locale/ru'
 import h from '../../style/header'
 import g from '../../style/global'
 import ChairHOC from '../../hoc/ChairHOC'
+import { settingsTime } from '../../config'
 
 class Days extends Component{
     constructor(props){
@@ -45,14 +46,7 @@ class Days extends Component{
         let n = _.range(1, 21)
         let days = n.reduce((p, item, index) => {
             moment.locale('ru')
-            p.push(moment().add(index, 'days').calendar(null, {
-                sameDay: 'MMM DD dd',
-                nextDay: 'MMM DD dd',
-                nextWeek: 'MMM DD dd',
-                lastDay: 'MMM DD dd',
-                lastWeek: 'MMM DD dd',
-                sameElse: 'MMM DD dd'
-            }))
+            p.push(moment().add(index, 'days').calendar(null, {...settingsTime['MMM DD dd']}))
             return p;
         }, []);
         this.setState({
@@ -73,14 +67,7 @@ class Days extends Component{
                         <div>
                         {this.state.days.map((item, index) => {
                             const day = item.split(' ')
-                            let dayFormat = moment().add(index, 'days').calendar(null, {
-                                sameDay: 'YYYY-MM-DD',
-                                nextDay: 'YYYY-MM-DD',
-                                nextWeek: 'YYYY-MM-DD',
-                                lastDay: 'YYYY-MM-DD',
-                                lastWeek: 'YYYY-MM-DD',
-                                sameElse: 'YYYY-MM-DD'
-                            })
+                            let dayFormat = moment().add(index, 'days').calendar(null, {...settingsTime['YYYY-MM-DD']})
                             return (
                                 <div key={index} className="itemDay" onClick={this.goDay.bind(this, dayFormat)}>
                                     <p className={dayFormat == this.state.activeDay ? css(h.text, h.active) : css(h.text)}>{day[0]}<span className={dayFormat == this.state.activeDay? css(h.span, h.actionSpan) : css(h.span)}>{day[1]}</span>{day[2]}</p>
