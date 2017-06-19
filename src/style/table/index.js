@@ -2,11 +2,13 @@ import { StyleSheet } from 'aphrodite/no-important';
 
 export default StyleSheet.create({
     numbers:{
-        width:'100%',
         height:45,
         background:'#050505',
-        paddingLeft:'14.2%',
+        paddingLeft:75,
         userSelect: 'none',
+        '@media screen and (max-width: 500px)':{
+            paddingLeft:'14.2%'
+        }
     },
     num:{
         flex:1,

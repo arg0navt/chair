@@ -9,8 +9,9 @@ import moment from 'moment'
 import 'moment/locale/ru'
 import h from '../../style/header'
 import g from '../../style/global'
+import ChairHOC from '../../hoc/ChairHOC'
 
-class Home extends Component{
+class Days extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -18,6 +19,7 @@ class Home extends Component{
             z:0,
             r:0,
             max:0,
+            activeDay:''
         }
     }
     start(ev){
@@ -54,7 +56,14 @@ class Home extends Component{
             return p;
         }, []);
         this.setState({
-            days:days
+            days:days,
+            activeDay: this.props.yesterday
+        })
+    }
+    goDay(day){
+        this.props.chairGet(day, this.props.Store.user.token)
+        this.setState({
+            activeDay:day
         })
     }
     render(){
@@ -64,10 +73,18 @@ class Home extends Component{
                         <div>
                         {this.state.days.map((item, index) => {
                             const day = item.split(' ')
+                            let dayFormat = moment().add(index, 'days').calendar(null, {
+                                sameDay: 'YYYY-MM-DD',
+                                nextDay: 'YYYY-MM-DD',
+                                nextWeek: 'YYYY-MM-DD',
+                                lastDay: 'YYYY-MM-DD',
+                                lastWeek: 'YYYY-MM-DD',
+                                sameElse: 'YYYY-MM-DD'
+                            })
                             return (
-                                <div key={index} className="itemDay">
-                                    <p className={item == this.props.yesterday ? css(h.text, h.active) : css(h.text)}>{day[0]}<span className={item == this.props.yesterday ? css(h.span, h.actionSpan) : css(h.span)}>{day[1]}</span>{day[2]}</p>
-                                    <div className={item == this.props.yesterday ? css(h.border, h.action) : css(h.border)}></div>
+                                <div key={index} className="itemDay" onClick={this.goDay.bind(this, dayFormat)}>
+                                    <p className={dayFormat == this.state.activeDay ? css(h.text, h.active) : css(h.text)}>{day[0]}<span className={dayFormat == this.state.activeDay? css(h.span, h.actionSpan) : css(h.span)}>{day[1]}</span>{day[2]}</p>
+                                    <div className={dayFormat == this.state.activeDay ? css(h.border, h.action) : css(h.border)}></div>
                                 </div>
                             )
                         })}
@@ -82,5 +99,7 @@ export default connect(
   state => ({
     Store: state
   }),
-  dispatch =>({})
-)(Home)
+  dispatch =>({
+      chairPush: (item) => {dispatch({type:'PUSH_CHAIR', payload:item})}
+  })
+)(ChairHOC(Days))

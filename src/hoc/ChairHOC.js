@@ -8,8 +8,8 @@ import { Api } from '../config'
 
 const ChairHOC = (ComposedComponent) => {
     class ChairHOC extends Component{
-        chairGet(date){
-            axios.get(Api('Pwa', 'getTimeLine',`"date":"${date}"`))
+        chairGet(date, token){
+            axios.get(Api('Pwa', 'getTimeLine',`"date":"${date}"`, token))
             .then((response) => {
                 if (response.data[0].result != undefined && response.data[0].result != null){ 
                     this.chairPush(response.data[0].result[`${date}`])

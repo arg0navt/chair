@@ -20,6 +20,7 @@ const UserHOC = (ComposedComponent) => {
         loginGet(login, password, token, error){
             axios.get(Api('Auth', 'auth', `"login":"${login}","password":"${password}","token":"${token}"`))
                 .then((response) => {
+                    console.log(response)
                     if (response.data[0].result != undefined && response.data[0].result != null){
                         this.props.logging(response.data[0].result)
                         browserHistory.push('/entry')

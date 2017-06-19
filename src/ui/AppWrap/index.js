@@ -11,6 +11,18 @@ import { Api } from '../../config'
 import UserHOC from '../../hoc/UserHOC'
 
 class AppWrap extends Component{
+    error(text){
+        this.setState({
+            error:true,
+            errorText:this.props.errorText
+        })
+        setTimeout(()=>{
+            this.setState({
+                error:false,
+                errorText:''
+            })
+        },4000)
+    }
     componentDidMount(){
         setTimeout(()=>{
             if (cookie.load('user') != undefined){

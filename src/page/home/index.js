@@ -49,7 +49,7 @@ class Home extends Component{
         super(props)
         this.state = {
             time: moment().format('LT'),
-            yesterday:moment().add(0, 'days').calendar(null, {sameDay: 'MMM DD dd', nextDay: 'MMM DD dd',nextWeek: 'MMM DD dd',lastDay: 'MMM DD dd',lastWeek: 'MMM DD dd',sameElse: 'MMM DD dd'}),
+            yesterday:moment().add(0, 'days').calendar(null, {sameDay: 'YYYY-MM-DD', nextDay: 'YYYY-MM-DD',nextWeek: 'YYYY-MM-DD',lastDay: 'YYYY-MM-DD',lastWeek: 'YYYY-MM-DD',sameElse: 'YYYY-MM-DD'}),
             past: 0,
             popup:false
         }
@@ -63,7 +63,7 @@ class Home extends Component{
         let position = positionH+positionM
         this.setState({past:position})
         this.props.Store.login == true ? setTimeout(()=>{this.wrap.scrollTop = position - this.wrap.clientHeight / 2},10) : false
-        this.props.chairGet('2017-06-19')
+        setTimeout(()=>{this.props.chairGet(this.state.yesterday, this.props.Store.user.token)},100)
     }
     toggle(){
         this.props.toggleView()
@@ -74,13 +74,11 @@ class Home extends Component{
             <Days time={this.state.time} yesterday={this.state.yesterday} />
             <div className={css(t.table)}>
                 <div className={css(g.flex, t.numbers)}>
-                    <div className={css(t.num)}><p className={css(t.numtext)}>№1</p></div>
-                    <div className={css(t.num)}><p className={css(t.numtext)}>№2</p></div>
-                    <div className={css(t.num)}><p className={css(t.numtext)}>№3</p></div>
-                    <div className={css(t.num)}><p className={css(t.numtext)}>№4</p></div>
-                    <div className={css(t.num)}><p className={css(t.numtext)}>№5</p></div>
-                    <div className={css(t.num)}><p className={css(t.numtext)}>№6</p></div>
-                    <div className={css(t.num)}><p className={css(t.numtext)}>№7</p></div>
+                    {this.props.Store.chair.length != 0 ? 
+                        this.props.Store.chair.map((item, index)=>{
+                            return <div key={index} className={css(t.num)}><p className={css(t.numtext)}>№{index+1}</p></div>
+                        }) : <div></div>
+                    }
                 </div>
                 <div className={css(g.flex, t.tableWrap)} id="tableWrap" ref={(wrap) => this.wrap = wrap}>
                     <div className={css(t.columTime)}>
