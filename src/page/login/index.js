@@ -10,6 +10,8 @@ import l from '../../style/login'
 import axios  from 'axios';
 import cookie from 'react-cookies'
 import { Api } from '../../config'
+import UserHOC from '../../hoc/UserHOC'
+
 
 class Login extends Component{
     constructor(props){
@@ -40,22 +42,6 @@ class Login extends Component{
             })
         },4000)
     }
-    logging(){
-        if (this.state.login == '' || this.state.password == ''){
-            this.error('Введите логин или пароль')
-        } else {
-            axios.get(Api('Auth', 'auth', `"login":"${this.state.login}","password":"${this.state.password}","token":"${this.props.Store.user.token}"`))
-            .then((response) => {
-                if (response.data[0].result != undefined && response.data[0].result != null){
-                    this.props.logging(response.data[0].result.user)
-                    browserHistory.push('/entry')
-                } else {
-                    this.error(response.data[0].error.message)
-                }
-            })
-            .catch((error) => {console.log(error)})
-        }
-    }
     render(){
         return(
             <div className={css(g.flex, l.loginWrap)}>
@@ -65,7 +51,7 @@ class Login extends Component{
                         <div className={css(l.form)}>
                             <input type="text" className={css(l.input, l.loginInput)} placeholder="Логин" onChange={this.change.bind(this, 'login')} />
                             <input type="password" className={css(l.input, l.pasInput)} placeholder="Пароль" onChange={this.change.bind(this, 'password')} />
-                            <button onClick={this.logging.bind(this)} className={css(l.button)}>Войти</button>
+                            <button className={css(l.button)} onClick={this.props.loginGet.bind(this, this.state.login, this.state.password, this.props.Store.user.token, this.error.bind(this))}>Войти</button>
                         </div>
                     </div>
                 </div>
@@ -88,4 +74,4 @@ export default connect(
   dispatch =>({
       logging: (item) => {dispatch({type:'LOGGING',payload:item})}
   })
-)(Login)
+)(UserHOC(Login))
