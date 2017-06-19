@@ -9,49 +9,37 @@ import t from '../../style/table'
 import Days from '../../ui/panels/days'
 import { FilterTable } from '../../ui/panels/filterTable'
 import Info from '../../ui/info'
+import ChairHOC from '../../hoc/ChairHOC'
 
-const timePx = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30',]
+const timePx = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00','22:30','23:00']
 
-const absent = [{start:'10:00',end:'11:00'},{start:'14:00',end:'14:30'}]
-const busy = [{start:'12:00',end:'13:00'},{start:'16:00',end:'16:30'}]
-
-const absent2 = [{start:'11:00',end:'12:00'},{start:'15:00',end:'15:30'}]
-const busy2 = [{start:'09:00',end:'10:00'},{start:'19:00',end:'16:30'}]
-
-const absent3 = [{start:'09:00',end:'09:30'},{start:'16:00',end:'16:30'}]
-const busy3 = [{start:'10:00',end:'11:00'},{start:'12:00',end:'13:30'}]
-
-const absent4 = [{start:'13:00',end:'14:00'},{start:'14:00',end:'14:30'}]
-const busy4 = [{start:'10:00',end:'11:00'},{start:'11:00',end:'11:30'}]
-
-const absent5 = [{start:'09:00',end:'09:30'},{start:'12:00',end:'13:00'}]
-const busy5 = [{start:'10:00',end:'10:30'},{start:'14:00',end:'15:00'}]
-
-const Column = ({absent, busy}) => {
+const Column = (items) => {
     let free = timePx
-    absent.map((i, n)=>{
-        free = _.filter(free, function(item, index){
-            let startIndex = _.indexOf(free, i.start)
-            let endIndex = _.indexOf(free, i.end)
-            if (!(index >= startIndex && index < endIndex)){
-                return item
-            }
-        })
-    })
-    busy.map((i, n)=>{
-        free = _.filter(free, function(item, index){
-            let startIndex = _.indexOf(free, i.start)
-            let endIndex = _.indexOf(free, i.end)
-            if (!(index >= startIndex && index < endIndex)){
-                return item
-            }
-        })
-    })
+    const array = items.items
     return (
         <div className={css(t.itemsColumn)}>
-            {absent.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'absent'} item={{start:item.start, end: item.end, number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
-            {busy.map((item, index) => <Info key={index} timeStart={item.start} timeEnd={item.end} status={'busy'} item={{start:item.start, end: item.end, number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
-            {free.map((item, index)=> <Info key={index} timeStart={item} timeEnd={''} status={'free'} item={{start:item, end: '', number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}
+            {array.map((item, index) => {
+                var startM = item.format_start.slice(3,5)
+                var endM = item.format_end.slice(3,5)
+                var firstStartM = startM.slice(0,1)
+                var firstEndM = endM.slice(0,1)
+                var numS = 0
+                var numE = 0
+                firstStartM == '0' ? numS = parseFloat(startM.slice(1,2)) : numS = parseFloat(startM)
+                firstEndM == '0' ? numE = parseFloat(endM.slice(1,2)) : numE = parseFloat(endM)
+                parseFloat(numS) >= 30 ? startM = '30' : startM = '00'
+                parseFloat(numE) >= 30 ? endM = '30' : endM = '00'
+                var start = `${item.format_start.slice(0,2)}:${startM}`
+                var end = `${item.format_end.slice(0,2)}:${endM}`
+                if (item.status == 1){
+                    const startIndex = _.indexOf(timePx, start)
+                    const endIndex = _.indexOf(timePx, end)
+                    const newArray = _.filter(timePx, (item, index) => {return index >= startIndex && index <= endIndex})
+                    return <div key={index}>{newArray.map((it, ind) => <Info key={ind} timeStart={it} timeEnd={''} status={'free'} item={{start:it, end: '', number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}</div>
+                } else {
+                    return <Info key={index} timeStart={start} timeEnd={end} status={item.status == 1 ? 'free' : item.status == 2 ? 'busy' : 'absent'} item={{start:item.format_start, end: item.format_end, number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />
+                }
+            })}
         </div>
     )
 }
@@ -75,6 +63,7 @@ class Home extends Component{
         let position = positionH+positionM
         this.setState({past:position})
         this.props.Store.login == true ? setTimeout(()=>{this.wrap.scrollTop = position - this.wrap.clientHeight / 2},10) : false
+        this.props.chairGet('2017-06-19')
     }
     toggle(){
         this.props.toggleView()
@@ -105,13 +94,11 @@ class Home extends Component{
                         <div className={css(t.linWrap)}>
                             {timePx.map((item, index) => <div key={index} className={css(t.lin)}></div>)}
                             <div className={css(g.flex, t.items)}>
-                                <Column absent={absent} busy={busy} />
-                                <Column absent={absent2} busy={busy2} />
-                                <Column absent={absent3} busy={busy3} />
-                                <Column absent={absent4} busy={busy4} />
-                                <Column absent={absent5} busy={busy5} />
-                                <Column absent={absent5} busy={busy5} />
-                                <Column absent={absent5} busy={busy5} />
+                                {this.props.Store.chair.length != 0 ? 
+                                    this.props.Store.chair.map((item, index)=>{
+                                        return <Column key={index} items={item} />
+                                    }) : <div></div>
+                                }
                             </div>
                             <div className={css(t.past)} style={{height:`${this.state.past}px`}}>
                                 <div className={css(t.pastLin)}></div>
@@ -153,5 +140,6 @@ export default connect(
   }),
   dispatch =>({
       toggleView: () => {dispatch({type:'TOGGLE_DETAIL'})},
+      chairPush: (item) => {dispatch({type:'PUSH_CHAIR', payload:item})}
   })
-)(Home)
+)(ChairHOC(Home))
