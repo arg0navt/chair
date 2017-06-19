@@ -4,6 +4,9 @@ import { browserHistory } from 'react-router'
 import Hammer from 'react-hammerjs';
 import { css } from 'aphrodite/no-important'
 import { IconNav, IconAdd } from '../icons'
+import _ from 'underscore'
+import moment from 'moment'
+import 'moment/locale/ru'
 import h from '../../style/header'
 import g from '../../style/global'
 
@@ -14,7 +17,7 @@ class Home extends Component{
             x:0,
             z:0,
             r:0,
-            max:0
+            max:0,
         }
     }
     start(ev){
@@ -36,55 +39,38 @@ class Home extends Component{
             max:-n
         })
     }
+    componentWillMount(){
+        let n = _.range(1, 21)
+        let days = n.reduce((p, item, index) => {
+            moment.locale('ru')
+            p.push(moment().add(index, 'days').calendar(null, {
+                sameDay: 'MMM DD dd',
+                nextDay: 'MMM DD dd',
+                nextWeek: 'MMM DD dd',
+                lastDay: 'MMM DD dd',
+                lastWeek: 'MMM DD dd',
+                sameElse: 'MMM DD dd'
+            }))
+            return p;
+        }, []);
+        this.setState({
+            days:days
+        })
+    }
     render(){
         return(
             <div className={css(h.days)}>
                     <Hammer onPanStart={this.start.bind(this)} onPan={this.pan.bind(this)} onPanEnd={this.end.bind(this)} className={css(h.list)} style={{transform: `translate3d(${this.state.x}px, 0px, 0px)`}}>
-                    <div>
-                        <div className="itemDay">
-                            <p className={css(h.text, h.active)}>апр<span className={css(h.span, h.actionSpan)}>10</span>пн</p>
-                            <div className={css(h.border, h.action)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>11</span>вт</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>12</span>ср</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>13</span>чт</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>14</span>пт</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>15</span>сб</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>16</span>вс</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>17</span>пн</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>18</span>вт</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>19</span>ср</p>
-                            <div className={css(h.border)}></div>
-                        </div>
-                        <div className="itemDay">
-                            <p className={css(h.text)}>апр<span className={css(h.span)}>20</span>чт</p>
-                            <div className={css(h.border)}></div>
-                        </div>
+                        <div>
+                        {this.state.days.map((item, index) => {
+                            const day = item.split(' ')
+                            return (
+                                <div key={index} className="itemDay">
+                                    <p className={item == this.props.yesterday ? css(h.text, h.active) : css(h.text)}>{day[0]}<span className={item == this.props.yesterday ? css(h.span, h.actionSpan) : css(h.span)}>{day[1]}</span>{day[2]}</p>
+                                    <div className={item == this.props.yesterday ? css(h.border, h.action) : css(h.border)}></div>
+                                </div>
+                            )
+                        })}
                         </div>
                     </Hammer>
                 </div>

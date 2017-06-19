@@ -10,8 +10,7 @@ import Panel from '../panels/panel'
 import { Api } from '../../config'
 
 class AppWrap extends Component{
-    componentDidMount(){
-        this.props.Store.user.logging == true ? this.props.Store.routing.locationBeforeTransitions.pathname == '/' ? browserHistory.push('/entry') : false : browserHistory.push('/')
+    token(){
         axios.get(Api('Auth', 'getTokenWithoutAuth'))
         .then((response) => {
             if (response.data[0].result != undefined && response.data[0].result != null){
@@ -19,6 +18,17 @@ class AppWrap extends Component{
             }
         })
         .catch((error) => {console.log(error)})
+    }
+    componentDidMount(){
+        setTimeout(()=>{
+            if (cookie.load('user') != undefined){
+                this.props.token(cookie.load('user').token)
+                this.props.logging(cookie.load('user').profile)
+            } else {
+                this.token()
+            }
+            this.props.Store.user.logging == true ? this.props.Store.routing.locationBeforeTransitions.pathname == '/' ? browserHistory.push('/entry') : false : browserHistory.push('/')
+        },10)
     }
     render(){
         return(
@@ -42,6 +52,7 @@ export default connect(
     Store: state
   }),
   dispatch =>({
-      token: (token) => {dispatch({type:'PUSH_TOKEN', payload: token})}
+      token: (token) => {dispatch({type:'PUSH_TOKEN', payload: token})},
+      logging: (item) => {dispatch({type:'LOGGING',payload:item})}
   })
 )(AppWrap)

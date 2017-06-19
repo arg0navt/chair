@@ -60,7 +60,8 @@ class Home extends Component{
     constructor(props){
         super(props)
         this.state = {
-            time: moment('2016-12-31 11:32').format('LT'),
+            time: moment().format('LT'),
+            yesterday:moment().add(0, 'days').calendar(null, {sameDay: 'MMM DD dd', nextDay: 'MMM DD dd',nextWeek: 'MMM DD dd',lastDay: 'MMM DD dd',lastWeek: 'MMM DD dd',sameElse: 'MMM DD dd'}),
             past: 0,
             popup:false
         }
@@ -81,7 +82,7 @@ class Home extends Component{
     render(){
         return(
             <div>
-            <Days />
+            <Days time={this.state.time} yesterday={this.state.yesterday} />
             <div className={css(t.table)}>
                 <div className={css(g.flex, t.numbers)}>
                     <div className={css(t.num)}><p className={css(t.numtext)}>№1</p></div>
