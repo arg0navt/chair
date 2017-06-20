@@ -12,31 +12,38 @@ import Info from '../../ui/info'
 import ChairHOC from '../../hoc/ChairHOC'
 import { settingsTime } from '../../config'
 
+const freeTime = (start, end) => {
+    const idx = {
+        startIndex: _.indexOf(settingsTime.timePx, start),
+        endIndex: _.indexOf(settingsTime.timePx, end)
+    }
+    return _.filter(settingsTime.timePx, (item, index) => {return index >= idx.startIndex && index <= idx.endIndex})
+}
+
+const roundOffMinutes = (start, end) => {
+    parseFloat(start) >= 30 ? start = '30' : start = '00'
+    parseFloat(end) >= 30 ? end = '30' : end = '00'
+    return {start:start, end:end}
+}
+
+const timePosition = (hour, minute, intervalHeight) => {
+    return ((hour - 9) * intervalHeight)+(1.5*(minute/.6))
+}
+
 const Column = (items) => {
     let free = settingsTime.timePx
     const array = items.items
     return (
         <div className={css(t.itemsColumn)}>
             {array.map((item, index) => {
-                var startM = item.format_start.slice(3,5)
-                var endM = item.format_end.slice(3,5)
-                var firstStartM = startM.slice(0,1)
-                var firstEndM = endM.slice(0,1)
-                var numS = 0
-                var numE = 0
-                firstStartM == '0' ? numS = parseFloat(startM.slice(1,2)) : numS = parseFloat(startM)
-                firstEndM == '0' ? numE = parseFloat(endM.slice(1,2)) : numE = parseFloat(endM)
-                parseFloat(numS) >= 30 ? startM = '30' : startM = '00'
-                parseFloat(numE) >= 30 ? endM = '30' : endM = '00'
-                var start = `${item.format_start.slice(0,2)}:${startM}`
-                var end = `${item.format_end.slice(0,2)}:${endM}`
-                if (item.status == 1){
-                    const startIndex = _.indexOf(settingsTime.timePx, start)
-                    const endIndex = _.indexOf(settingsTime.timePx, end)
-                    const newArray = _.filter(settingsTime.timePx, (item, index) => {return index >= startIndex && index <= endIndex})
+                const minutes = roundOffMinutes(item.format_start.slice(3,5), item.format_end.slice(3,5))
+                const start = `${item.format_start.slice(0,2)}:${minutes.start}`
+                const end = `${item.format_end.slice(0,2)}:${minutes.end}`
+                if (item.status === 1){
+                    const newArray = freeTime(start, end)
                     return <div key={index}>{newArray.map((it, ind) => <Info key={ind} timeStart={it} timeEnd={''} status={'free'} item={{start:it, end: '', number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />)}</div>
                 } else {
-                    return <Info key={index} timeStart={start} timeEnd={end} status={item.status == 1 ? 'free' : item.status == 2 ? 'busy' : 'absent'} item={{start:item.format_start, end: item.format_end, number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />
+                    return <Info key={index} timeStart={start} timeEnd={end} status={item.status === 1 ? 'free' : item.status === 2 ? 'busy' : 'absent'} item={{start:item.format_start, end: item.format_end, number:4, name:'Елена Иванова', phone:'8 (900) 123-45-67', type:'Стрижка коротких волос', master:'Евгения Петрова'}} />
                 }
             })}
         </div>
@@ -54,15 +61,20 @@ class Home extends Component{
         }
     }
     componentDidMount(){
-        const h = this.state.time.substring(0,2)
-        let m = this.state.time.substring(3,5)
-        let positionH = (h - 9)*150
-        let procentM = (m/.6)
-        let positionM = 1.5 * procentM
-        let position = positionH+positionM
+        let position = timePosition(this.state.time.substring(0,2), this.state.time.substring(3,5), 150)
         this.setState({past:position})
-        this.props.Store.login == true ? setTimeout(()=>{this.wrap.scrollTop = position - this.wrap.clientHeight / 2},10) : false
-        setTimeout(()=>{this.props.chairGet(this.state.yesterday, this.props.Store.user.token)},100)
+        if (this.props.Store.user.token != ''){
+            setTimeout(()=>{
+                this.wrap.scrollTop = this.state.past - this.wrap.clientHeight / 4
+                this.props.chairGet(this.state.yesterday, this.props.Store.user.token)
+            },10)
+        }
+    }
+    componentWillReceiveProps(nextProps){
+        if (nextProps.Store.user.logging != this.props.Store.user.logging){
+            this.wrap.scrollTop = this.state.past - this.wrap.clientHeight / 4
+            this.props.chairGet(this.state.yesterday, this.props.Store.user.token)
+        }
     }
     toggle(){
         this.props.toggleView()

@@ -12,6 +12,15 @@ import g from '../../style/global'
 import ChairHOC from '../../hoc/ChairHOC'
 import { settingsTime } from '../../config'
 
+const dayList = () => {
+    const n = _.range(1, 21)
+    return n.reduce((p, item, index) => {
+        moment.locale('ru')
+        p.push(moment().add(index, 'days').calendar(null, {...settingsTime['MMM DD dd']}))
+        return p;
+    }, []);
+}
+
 class Days extends Component{
     constructor(props){
         super(props)
@@ -43,14 +52,8 @@ class Days extends Component{
         })
     }
     componentWillMount(){
-        let n = _.range(1, 21)
-        let days = n.reduce((p, item, index) => {
-            moment.locale('ru')
-            p.push(moment().add(index, 'days').calendar(null, {...settingsTime['MMM DD dd']}))
-            return p;
-        }, []);
         this.setState({
-            days:days,
+            days:dayList(),
             activeDay: this.props.yesterday
         })
     }
