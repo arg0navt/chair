@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
-const setting = {
+export const setting = {
     server:'http://barbers.card.kaerus.ru',
-    platform:'6'
+    platform:'6',
+    site:'/timeis/'
+}
+
+const s = {
+    server:'http://barbers.card.kaerus.ru',
+    platform:'6',
 }
 
 export const settingsTime = {
@@ -26,5 +32,5 @@ export const settingsTime = {
 }
 
 export const Api = (controll, method, options = '', token = '') => {
-    return `${setting.server}/${controll}/${method}.json?commands=[{%22data%22:{${options == '' ? '' : options + ','}${token == '' ? '' : '"token":"' + token + '",'}%22platform%22:%22${setting.platform}%22}}]`
+    return `${s.server}/${controll}/${method}.json?commands=[{%22data%22:{${options == '' ? '' : options + ','}${token == '' ? '' : '"token":"' + token + '",'}%22platform%22:%22${s.platform}%22}}]`
 }

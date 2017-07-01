@@ -7,7 +7,7 @@ import axios  from 'axios';
 import cookie from 'react-cookies'
 import Navigation from './navigation'
 import Panel from '../panels/panel'
-import { Api } from '../../config'
+import { Api, setting } from '../../config'
 import UserHOC from '../../hoc/UserHOC'
 
 class AppWrap extends Component{
@@ -21,17 +21,18 @@ class AppWrap extends Component{
                 error:false,
                 errorText:''
             })
-        },4000)
+        },2000)
     }
     componentDidMount(){
         setTimeout(()=>{
-            if (cookie.load('user') != undefined){
+            console.log(typeof {})
+            if (typeof cookie.load('user') == 'object' && Object.keys(cookie.load('user')).length != 0){
                 this.props.token(cookie.load('user').token)
                 this.props.logging(cookie.load('user').profile)
             } else {
                 this.props.tokenGet()
             }
-            this.props.Store.user.logging == true ? this.props.Store.routing.locationBeforeTransitions.pathname == '/' ? browserHistory.push('/entry') : false : browserHistory.push('/')
+            this.props.Store.user.logging == true ? this.props.Store.routing.locationBeforeTransitions.pathname == '/' ? browserHistory.push(`${setting.site}entry`) : false : browserHistory.push(`${setting.site}`)
         },10)
     }
     render(){

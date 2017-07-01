@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { css } from 'aphrodite/no-important';
+import { setting } from '../../config'
 import t from '../../style/table'
 
 export const FilterTable = () => (

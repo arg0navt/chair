@@ -2,6 +2,7 @@
   "name": "ucoz",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/timeis/",
   "dependencies": {
     "aphrodite": "^1.2.1",
     "axios": "^0.16.1",

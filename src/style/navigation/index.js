@@ -1,4 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
+import { setting } from '../../config'
 
 export default StyleSheet.create({
     shadow:{

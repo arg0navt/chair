@@ -9,7 +9,7 @@ import g from '../../style/global'
 import l from '../../style/login'
 import axios  from 'axios';
 import cookie from 'react-cookies'
-import { Api } from '../../config'
+import { Api, setting } from '../../config'
 import UserHOC from '../../hoc/UserHOC'
 
 
@@ -42,6 +42,9 @@ class Login extends Component{
             })
         },4000)
     }
+    login(login, password, token, error){
+        this.props.loginGet(login, password, token, error)
+    }
     render(){
         return(
             <div className={css(g.flex, l.loginWrap)}>
@@ -51,7 +54,7 @@ class Login extends Component{
                         <div className={css(l.form)}>
                             <input type="text" className={css(l.input, l.loginInput)} placeholder="Логин" onChange={this.change.bind(this, 'login')} />
                             <input type="password" className={css(l.input, l.pasInput)} placeholder="Пароль" onChange={this.change.bind(this, 'password')} />
-                            <button className={css(l.button)} onClick={this.props.loginGet.bind(this, this.state.login, this.state.password, this.props.Store.user.token, this.error.bind(this))}>Войти</button>
+                            <button className={css(l.button)} onClick={this.login.bind(this, this.state.login, this.state.password, this.props.Store.user.token, this.error.bind(this))}>Войти</button>
                         </div>
                     </div>
                 </div>

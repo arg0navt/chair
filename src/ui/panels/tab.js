@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { css } from 'aphrodite/no-important'
 import { connect } from 'react-redux'
 import { Link } from 'react-router';
+import { setting } from '../../config'
 import g from '../../style/global'
 import a from '../../style/additionally'
 

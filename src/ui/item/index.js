@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router'
 import { css } from 'aphrodite/no-important'
 import { Tab } from '../../ui/panels/tab'
 import Hammer from 'react-hammerjs';
+import { setting } from '../../config'
 import g from '../../style/global'
 import a from '../../style/additionally'
 
@@ -18,8 +19,8 @@ export const Item = ({item}) => (
             <div>
                 <p className={css(a.itemName)}>{item.name}</p>
                 <div className={css(g.flex, a.buttonControll)}>
-                    <div className={css(g.flex, a.button, a.buttonReady)}><img className={css(a.iconReady)} src={'/img/buttinIcon1.png'} alt=""/>Готово</div>
-                    <div className={css(g.flex, a.button, a.buttonAbolish)}><img className={css(a.iconAbolish)} src={'/img/buttinIcon2.png'} alt=""/>Отменить</div>
+                    <div className={css(g.flex, a.button, a.buttonReady)}><img className={css(a.iconReady)} src={`${setting.site}img/buttinIcon1.png`} alt=""/>Готово</div>
+                    <div className={css(g.flex, a.button, a.buttonAbolish)}><img className={css(a.iconAbolish)} src={`${setting.site}img/buttinIcon2.png`} alt=""/>Отменить</div>
                 </div>
             </div>
         </div>
@@ -81,7 +82,7 @@ class ItemHairdresser extends Component{
                         </div>
                     </div>
                     <div className={css(g.flex, a.deleteBlock)}>
-                        <img className={css(a.deleteIcon)} src={'/img/delete.png'} alt=""/>
+                        <img className={css(a.deleteIcon)} src={`${setting.site}img/delete.png`} alt=""/>
                     </div>
                 </div>
             </Hammer>

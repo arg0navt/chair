@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router'
 import Hammer from 'react-hammerjs';
 import { css } from 'aphrodite/no-important'
 import { IconNav, IconAdd } from '../icons'
+import { setting } from '../../config'
 import h from '../../style/header'
 import g from '../../style/global'
 

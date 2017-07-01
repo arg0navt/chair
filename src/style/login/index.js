@@ -1,4 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
+import { setting } from '../../config'
 
 export default StyleSheet.create({
     loginWrap:{
@@ -7,7 +8,7 @@ export default StyleSheet.create({
         height:'100%',
         top:0,
         left:0,
-        background:'url(/img/bgLogin.png) no-repeat center / cover'
+        background:`url(${setting.site}img/bgLogin.png) no-repeat center / cover`
     },
     login:{
         width:314,
@@ -38,11 +39,11 @@ export default StyleSheet.create({
         }
     },
     loginInput:{
-        background:'url(/img/user.png) no-repeat center left',
+        background:`url(${setting.site}img/user.png) no-repeat center left`,
         backgroundSize:16
     },
     pasInput:{
-        background:'url(/img/pas.png) no-repeat center left',
+        background:`url(${setting.site}img/pas.png) no-repeat center left`,
         backgroundSize:13
     },
     form:{

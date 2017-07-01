@@ -10,21 +10,22 @@ import Control from './page/control'
 import ControlHairdresser from './page/control/hairdresser'
 import ControlArmchairs from './page/control/armchairs'
 import AddHairdresser from './page/control/add'
+import { setting } from './config'
 
 export const router = (
-    <Route path="/" component={AppWrap}>
+    <Route path={`${setting.site}`} component={AppWrap}>
         <IndexRoute component={Login} />
-        <Route path="/entry" component={Home}></Route>
-        <Route path="/records" component={Records}>
+        <Route path={`${setting.site}entry`} component={Home}></Route>
+        <Route path={`${setting.site}records`} component={Records}>
             <IndexRoute component={RecordsCurrent} />
-            <Route path="/records/current" component={RecordsCurrent}></Route>
-            <Route path="/records/history" component={RecordsHistory}></Route>
+            <Route path={`${setting.site}records/current`} component={RecordsCurrent}></Route>
+            <Route path={`${setting.site}records/history`} component={RecordsHistory}></Route>
         </Route>
-        <Route path="/control" component={Control} title={'Мои записи'}>
+        <Route path={`${setting.site}control`} component={Control} title={'Мои записи'}>
             <IndexRoute component={ControlHairdresser} />
-            <Route path="/control/hairdresser" component={ControlHairdresser}></Route>
-            <Route path="/control/hairdresser/add" component={AddHairdresser}></Route>
-            <Route path="/control/armchairs" component={ControlArmchairs}></Route>
+            <Route path={`${setting.site}control/hairdresser`} component={ControlHairdresser}></Route>
+            <Route path={`${setting.site}control/hairdresser/add`} component={AddHairdresser}></Route>
+            <Route path={`${setting.site}control/armchairs`} component={ControlArmchairs}></Route>
         </Route>
     </Route>
 )

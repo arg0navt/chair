@@ -4,19 +4,20 @@ import { browserHistory } from 'react-router'
 import { css } from 'aphrodite/no-important'
 import { Tab } from '../../ui/panels/tab'
 import { ItemHistory } from '../../ui/item'
+import { setting } from '../../config'
 import g from '../../style/global'
 import a from '../../style/additionally'
 
 const links = [
-    {text:'Текущие',a:'/records'},
-    {text:'История',a:'/records_history'}
+    {text:'Текущие',a:`${setting.site}records`},
+    {text:'История',a:`${setting.site}records_history`}
 ]
 const array = [
-    {photo:'/img/ava1.png', name:'Елена Дементьева', status:'reade'},
-    {photo:'/img/ava2.png', name:'Надежда Соколова', status:'canceled'},
-    {photo:'/img/ava3.png', name:'Наталья Рязанова', status:'reade'},
-    {photo:'/img/ava4.png', name:'Вероника Осипова', status:'canceled'},
-    {photo:'/img/ava5.png', name:'Евгения Петрова', status:'reade'},
+    {photo:`${setting.site}img/ava1.png`, name:'Елена Дементьева', status:'reade'},
+    {photo:`${setting.site}img/ava2.png`, name:'Надежда Соколова', status:'canceled'},
+    {photo:`${setting.site}img/ava3.png`, name:'Наталья Рязанова', status:'reade'},
+    {photo:`${setting.site}img/ava4.png`, name:'Вероника Осипова', status:'canceled'},
+    {photo:`${setting.site}img/ava5.png`, name:'Евгения Петрова', status:'reade'},
 ]
 
 class RecordsCurrent extends Component{

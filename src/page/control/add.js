@@ -7,6 +7,7 @@ import ItemHairdresser from '../../ui/item'
 import { Link } from 'react-router';
 import g from '../../style/global'
 import a from '../../style/additionally'
+import { setting } from '../../config'
 
 class AddHairdresser extends Component{
     constructor(props){

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { css } from 'aphrodite/no-important'
 import Hammer from 'react-hammerjs';
+import { setting } from '../../config'
 import g from '../../style/global'
 import n from '../../style/navigation'
 import { Link } from 'react-router';
@@ -10,23 +11,23 @@ import { Link } from 'react-router';
 const nav = [
     {
         name:'Календарь',
-        href:'/entry',
-        icon:'/img/calendar.png'
+        href:`${setting.site}entry`,
+        icon:`${setting.site}img/calendar.png`
     },
     {
         name:'Мои записи',
-        href:'/control',
-        icon:'/img/book-2.png'
+        href:`${setting.site}control`,
+        icon:`${setting.site}img/book-2.png`
     },
     {
         name:'Управление',
-        href:'/records',
-        icon:'/img/compose.png'
+        href:`${setting.site}records`,
+        icon:`${setting.site}img/compose.png`
     },
     {
         name:'Помощь',
-        href:'',
-        icon:'/img/-.png'
+        href:`${setting.site}`,
+        icon:`${setting.site}img/-.png`
     }
 ]
 
@@ -47,7 +48,7 @@ class Navigation extends Component{
                 <div className={css(g.flex, n.nav)} style={this.props.Store.nav == false ? {left:-1052} : {left:0}}>
                     <div className={css(n.navWrap)}>
                         <div className={css(n.profil)}>
-                            <div className={css(n.avatar)}><img className={css(n.avatarPich)} src={'/img/avatar.png'} alt=""/></div>
+                            <div className={css(n.avatar)}><img className={css(n.avatarPich)} src={`${setting.site}img/avatar.png`} alt=""/></div>
                             <p className={css(n.name)}>Елена Петрова</p>
                         </div>
                         <div className={css(n.list)}>

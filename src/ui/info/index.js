@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import moment from 'moment'
 import _ from 'underscore'
 import { css } from 'aphrodite/no-important';
+import { setting } from '../../config'
 import g from '../../style/global'
 import t from '../../style/table'
 import Days from '../../ui/panels/days'

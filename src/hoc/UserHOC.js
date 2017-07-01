@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { css } from 'aphrodite/no-important';
 import axios  from 'axios';
 import cookie from 'react-cookies'
-import { Api } from '../config'
+import { Api, setting } from '../config'
 
 const UserHOC = (ComposedComponent) => {
     class UserHOC extends Component{
@@ -22,14 +22,14 @@ const UserHOC = (ComposedComponent) => {
                 .then((response) => {
                     console.log(response)
                     if (response.data[0].result != undefined && response.data[0].result != null){
-                        this.props.logging(response.data[0].result)
-                        browserHistory.push('/entry')
+                        this.logging(response.data[0].result)
+                        browserHistory.push(`${setting.site}entry`)
                     } else {
                         this.error(response.data[0].error.message)
                     }
                 })
                 .catch((error) => {
-                    this.error(error)
+                    console.log(error)
                 })
         }
         render() {

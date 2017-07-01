@@ -10,7 +10,7 @@ import Days from '../../ui/panels/days'
 import { FilterTable } from '../../ui/panels/filterTable'
 import Info from '../../ui/info'
 import ChairHOC from '../../hoc/ChairHOC'
-import { settingsTime } from '../../config'
+import { settingsTime,  setting} from '../../config'
 
 const freeTime = (start, end) => {
     const idx = {

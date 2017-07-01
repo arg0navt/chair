@@ -6,6 +6,7 @@ import Hammer from 'react-hammerjs';
 import { Tab } from '../../ui/panels/tab'
 import g from '../../style/global'
 import a from '../../style/additionally'
+import { setting } from '../../config'
 
 class ControlArmchairs extends Component{
     constructor(props){
@@ -30,9 +31,9 @@ class ControlArmchairs extends Component{
                 <div className={css(a.armchairWrap)}>
                     <p className={css(a.armchairText)}>Кол-во кресел в зале</p>
                     <div className={css(g.flex, a.wrapButton)}>
-                        <div className={css(g.flex, a.buttonNum, a.plus)} onClick={this.minus.bind(this)}><img className={css(a.numIcon)} src={'/img/numMinus.png'} alt=""/></div>
+                        <div className={css(g.flex, a.buttonNum, a.plus)} onClick={this.minus.bind(this)}><img className={css(a.numIcon)} src={`${setting.site}img/numMinus.png`} alt=""/></div>
                         <p className={css(a.textNum)}>{this.state.num}</p>
-                        <div className={css(g.flex, a.buttonNum, a.minus)} onClick={this.plus.bind(this)}><img className={css(a.numIcon)} src={'/img/numPlus.png'} alt=""/></div>
+                        <div className={css(g.flex, a.buttonNum, a.minus)} onClick={this.plus.bind(this)}><img className={css(a.numIcon)} src={`${setting.site}img/numPlus.png`} alt=""/></div>
                     </div>
                 </div>
             </div>
