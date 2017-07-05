@@ -25,7 +25,6 @@ class AppWrap extends Component{
     }
     componentDidMount(){
         setTimeout(()=>{
-            console.log(typeof {})
             if (typeof cookie.load('user') == 'object' && Object.keys(cookie.load('user')).length != 0){
                 this.props.token(cookie.load('user').token)
                 this.props.logging(cookie.load('user').profile)

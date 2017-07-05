@@ -1,8 +1,9 @@
-import _ from 'underscore'
-
 export default function chair(state = [], action) {
   if (action.type === 'PUSH_CHAIR'){
-    let array = _.values(action.payload)
+    var array = []
+    for(let key of action.payload){
+      array.push(key)
+    }
     return array
   }
   return state;

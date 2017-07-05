@@ -13,9 +13,6 @@ const store = createStore(Reducers, composeWithDevTools());
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-    , document.getElementById('root'));
+    <Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
 

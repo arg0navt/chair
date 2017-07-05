@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import moment from 'moment'
-import _ from 'underscore'
 import { css } from 'aphrodite/no-important';
 import g from '../../style/global'
 import t from '../../style/table'
@@ -14,10 +13,10 @@ import { settingsTime,  setting} from '../../config'
 
 const freeTime = (start, end) => {
     const idx = {
-        startIndex: _.indexOf(settingsTime.timePx, start),
-        endIndex: _.indexOf(settingsTime.timePx, end)
+        startIndex: settingsTime.timePx.indexOf(start),
+        endIndex: settingsTime.timePx.indexOf(end)
     }
-    return _.filter(settingsTime.timePx, (item, index) => {return index >= idx.startIndex && index <= idx.endIndex})
+    return settingsTime.timePx.filter((item, index) => {return index >= idx.startIndex && index <= idx.endIndex})
 }
 
 const roundOffMinutes = (start, end) => {
